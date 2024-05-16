@@ -13,7 +13,7 @@
 }
 
 .container {
-  background-color: rebeccapurple;
+  background-color: var(--bg);
   width: 1536px;
   margin: auto;
   padding: 0px 50px;
