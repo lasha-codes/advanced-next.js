@@ -5,5 +5,3 @@ const Error = () => {
 }
 
 export default Error
-
-// stopLine - 29:53
