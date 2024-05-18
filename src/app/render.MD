@@ -32,3 +32,5 @@ Client side rendering {
 - Slower initial load
 
 }
+
+// If we wrap server side component with client side component is it still gonna be server side component? answer is yes
