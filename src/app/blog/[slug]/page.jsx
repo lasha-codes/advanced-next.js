@@ -17,7 +17,7 @@ const SinglePostPage = async ({ params, searchParams }) => {
 
   // return res.json()
   // }
-  const post = await getPost(parseInt(params.slug))
+  const post = await getPost(params.slug)
 
   return (
     <div className={styles.container}>
@@ -37,6 +37,7 @@ const SinglePostPage = async ({ params, searchParams }) => {
           <Image
             className={styles.avatar}
             src={
+              post.img ||
               'https://images.pexels.com/photos/22674727/pexels-photo-22674727/free-photo-of-a-black-and-white-photo-of-a-church-in-a-city.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load'
             }
             alt=''
@@ -44,14 +45,14 @@ const SinglePostPage = async ({ params, searchParams }) => {
             height={50}
           />
           <Suspense fallback={<div>Loading...</div>}>
-            <PostUser userId={params.slug} />
+            <PostUser userId={post.userId} />
           </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
           </div>
         </div>
-        <div className={styles.content}>{post.body}</div>
+        <div className={styles.content}>{post.desc}</div>
       </div>
     </div>
   )

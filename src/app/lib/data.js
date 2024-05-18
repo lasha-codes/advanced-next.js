@@ -29,7 +29,9 @@ export const getPost = async (slug) => {
   try {
     connectToDb()
     const post = await Post.find({ slug })
-    return post
+    return post.find((idk) => {
+      return idk
+    })
   } catch (err) {
     console.log(err)
     throw new Error('Failed to fetch post!')
