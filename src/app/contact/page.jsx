@@ -11,7 +11,6 @@ const ContactPage = () => {
         <Image src='/contact.png' alt='' fill className={styles.img} />
       </div>
       <div className={styles.formContainer}>
-        <HydrationTestNoSSR />
         <form className={styles.form}>
           <input type='text' placeholder='Name and Surname' />
           <input type='text' placeholder='Email Address' />

@@ -24,6 +24,7 @@ const SinglePostPage = async ({ params, searchParams }) => {
       <div className={styles.imgContainer}>
         <Image
           src={
+            post.img ||
             'https://images.pexels.com/photos/22674727/pexels-photo-22674727/free-photo-of-a-black-and-white-photo-of-a-church-in-a-city.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load'
           }
           alt=''
@@ -34,22 +35,14 @@ const SinglePostPage = async ({ params, searchParams }) => {
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
-          <Image
-            className={styles.avatar}
-            src={
-              post.img ||
-              'https://images.pexels.com/photos/22674727/pexels-photo-22674727/free-photo-of-a-black-and-white-photo-of-a-church-in-a-city.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load'
-            }
-            alt=''
-            width={50}
-            height={50}
-          />
           <Suspense fallback={<div>Loading...</div>}>
             <PostUser userId={post.userId} />
           </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>01.01.2024</span>
+            <span className={styles.detailValue}>
+              {post.createdAt.toString().slice(4, 16)}
+            </span>
           </div>
         </div>
         <div className={styles.content}>{post.desc}</div>
