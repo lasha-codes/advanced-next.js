@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './singlePost.module.css'
+import PostUser from '@/components/postUser/postUser'
 
 const SinglePostPage = async ({ params, searchParams }) => {
   const getData = async () => {
@@ -40,10 +41,7 @@ const SinglePostPage = async ({ params, searchParams }) => {
             width={50}
             height={50}
           />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Terry Jefferson</span>
-          </div>
+          <PostUser userId={post.userId} />
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
