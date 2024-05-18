@@ -1,21 +1,23 @@
 import Image from 'next/image'
 import styles from './singlePost.module.css'
 import PostUser from '@/components/postUser/postUser'
+import { Suspense } from 'react'
+import { getPost } from '@/app/lib/data'
 
 const SinglePostPage = async ({ params, searchParams }) => {
-  const getData = async () => {
-    const res = await fetch(
-      `https://jsonplaceholder.typicode.com/posts/${params.slug}`,
-      {}
-    )
+  // const getData = async () => {
+  // const res = await fetch(
+  // `https://jsonplaceholder.typicode.com/posts/${params.slug}`,
+  // {}
+  // )
 
-    if (!res.ok) {
-      throw new Error('Something went wrong')
-    }
+  // if (!res.ok) {
+  // throw new Error('Something went wrong')
+  // }
 
-    return res.json()
-  }
-  const post = await getData()
+  // return res.json()
+  // }
+  const post = await getPost(parseInt(params.slug))
 
   return (
     <div className={styles.container}>
@@ -41,7 +43,9 @@ const SinglePostPage = async ({ params, searchParams }) => {
             width={50}
             height={50}
           />
-          <PostUser userId={post.userId} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <PostUser userId={params.slug} />
+          </Suspense>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2024</span>
