@@ -3,6 +3,7 @@
 import { connectToDb } from './utils'
 import { Post } from './models'
 import { revalidatePath } from 'next/cache'
+import { signOut } from './auth'
 
 export const addPost = async (formData) => {
   //   const title = formData.get('title')
@@ -42,4 +43,9 @@ export const deletePost = async (formData) => {
     console.log(err)
     return { error: 'Something went wrong!' }
   }
+}
+
+export const handleLogout = async () => {
+  'use server'
+  await signOut()
 }
