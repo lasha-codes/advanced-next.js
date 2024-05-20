@@ -97,6 +97,6 @@ export const login = async (prevState, formData) => {
     if (err.message.includes('Read more at')) {
       return { error: 'Invalid username or password' }
     }
-    return { error: 'Something went wrong' }
+    throw err
   }
 }
