@@ -16,7 +16,7 @@ const LoginForm = () => {
   }, [state?.success, router])
 
   return (
-    <form action={login} className={styles.form}>
+    <form action={formAction} className={styles.form}>
       <input type='text' placeholder='username' name='username' />
       <input type='password' placeholder='password' name='password' />
       {state?.error}
